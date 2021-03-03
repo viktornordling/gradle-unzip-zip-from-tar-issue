@@ -1,20 +1,20 @@
- task copyTar(type: Copy) {
+apply plugin: "java"
+
+task extractTar(type: Copy) {
    from(tarTree("../a.tgz")) {
      include '**/*.zip'
    }
    into "${buildDir}/tarOutput"
 }
 
-task unzipAndRezipZip(type: Zip, dependsOn: copyTar) {
+task unzipAndRezipZip(type: Zip, dependsOn: extractTar) {
   archiveFileName = "rezipped.zip"
   destinationDir(file("${buildDir}/zipOutput"))
   from {
     zipTree(fileTree("${buildDir}/tarOutput").find { it.name.endsWith("zip") })
+    exclude '**/b.txt'
   }
 }
 
-unzipAndRezipZip.dependsOn(copyTar)
+unzipAndRezipZip.dependsOn(extractTar)
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}

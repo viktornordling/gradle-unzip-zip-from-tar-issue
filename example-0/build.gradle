@@ -1,0 +1,10 @@
+apply plugin: "java"
+
+task unzipAndRezipZip(type: Zip) {
+  archiveFileName = "rezipped.zip"
+  destinationDir(file("${buildDir}/zipOutput"))
+  from(zipTree("../a.zip")) {
+      exclude '**/b.txt'
+  }
+}
+

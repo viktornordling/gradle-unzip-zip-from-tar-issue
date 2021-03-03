@@ -1,0 +1,17 @@
+apply plugin: "java"
+
+task extractTar(type: Copy) {
+   from(tarTree("../a.tgz")) {
+     include '**/*.zip'
+   }
+   into "${buildDir}/tarOutput"
+}
+
+task unzipAndRezipZip(type: Zip, dependsOn: extractTar) {
+  archiveFileName = "rezipped.zip"
+  destinationDirectory
+  from(fileTree("${buildDir}/tarOutput").find { it.name.endsWith("zip") }) {
+      exclude '**/b.txt'
+  }
+}
+
