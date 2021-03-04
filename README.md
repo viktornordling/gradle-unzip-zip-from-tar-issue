@@ -88,7 +88,7 @@ and after two runs we have the rezipped file.
 ## example-3
 In googling around, I read somewhere (maybe [here](https://stackoverflow.com/a/20726722/214429))
 that with curly braces you can defer searching for the file until execution (rather than during
-the "parsing" / "building" of the project. This results in the following interesting
+the "parsing" / "building" of the project). This results in the following interesting
 behavior:
 
 ```
