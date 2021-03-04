@@ -9,11 +9,11 @@ Now, the "business case" has changed, and we have the .zip file inside a .tgz fi
 to unpack the tar file, unzip the zip file and then process the files inside the zip.
 
 ## example-0
-This example shows that thigns worked as expected  before the .tgz file.
+This example shows that things worked as expected before the .tgz file.
 ```
-cd example-0
-gw clean unzipAndRezipZip
-tree
+0. cd example-0
+1. gw clean unzipAndRezipZip
+2. tree
 .
 ├── build
 │   └── zipOutput
