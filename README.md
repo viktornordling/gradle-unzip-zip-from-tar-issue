@@ -70,8 +70,6 @@ and after two runs we have the rezipped file.
 3. tree
 .
 ├── build
-│   ├── distributions
-│   │   └── rezipped.zip
 │   └── tarOutput
 │       └── a.zip
 
