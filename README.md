@@ -43,17 +43,19 @@ Path may not be null or empty string. path='null'
 ```
 And, `a.tgz` is exactly where it should be:
 ```
-)$ tree
+$ tree
 .
 ├── build
 │   └── tarOutput
 │       └── a.zip
 ```
 
+And if we simply run `gw unzipAndRezipZip` again, it succeeds.
+
 Also notice that this, weirdly, succeeds:
 
 ```
-gw clean unzipAndRezipZip
+$ gw clean unzipAndRezipZip
 ```
 
 ## example-2
