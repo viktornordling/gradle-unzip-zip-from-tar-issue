@@ -128,3 +128,5 @@ However, there's still one kink: if we run `gw clean unzipAndRezipZip` in one go
 ```
 > Cannot expand ZIP '/Volumes/git/projects/pi/gradle-tests/basic/example-4/build/tmp/expandedArchives/a.tgz_80f151c6b63f43b01621e096c7cdfd7c/a.zip' as it does not exist.
 ```
+
+The real question is: shouldn't it be easier to have tasks which produce files as outputs and other tasks that take these files as inputs?
