@@ -128,3 +128,35 @@ However, there's still one kink: if we run `gw clean unzipAndRezipZip` in one go
 ```
 
 The real question is: shouldn't it be easier to have tasks which produce files as outputs and other tasks that take these files as inputs?
+
+## example-5
+In example-5, we have had some [very helpful feedback](https://stackoverflow.com/questions/66485931/gradle-process-files-inside-a-zip-inside-a-tar/66538778?noredirect=1#comment117638004_66538778)
+from the user mcernak on Stackoverflow, who pointed out that we can do:
+
+```
+from{fileTree("${buildDir}/tarOutput").find { it.name.endsWith("zip") }} {
+```
+
+instead of 
+
+```
+from(fileTree("${buildDir}/tarOutput").find { it.name.endsWith("zip") }) {
+```
+
+and thus defer the execution of the `fileTree` call such that it doesn't complain about the the path being null. However, unfortunately, in my quest to make
+the example as minimal as possible, I had removed too much. We also need to `zipTree` the `fileTree`, so that the zip gets unzipped, so that we can filter out
+`b.txt`.
+
+So in this example, we try what mcernak suggested, with the only addition of adding a `zipTree` around the `fileTree` and we get the same old error:
+
+```
+0. cd example-5
+1. gw unzipAndRezipZip
+
+FAILURE
+path may not be null or empty string. path='null'
+
+2. gw extractTar 
+3. gw unzipAndRezipZip => works
+```
+
